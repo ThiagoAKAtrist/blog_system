@@ -4,8 +4,14 @@ import java.util.List;
 
 public class ListPostsOutputDto {
 
+    private List<PostDto> posts;
+
     public ListPostsOutputDto(List<PostDto> posts) {
-        //TODO Auto-generated constructor stub
+        this.posts = posts;
+    }
+    
+    public List<PostDto> getPosts() {
+        return posts;
     }
     
 }
