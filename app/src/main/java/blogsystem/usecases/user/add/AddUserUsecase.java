@@ -1,5 +1,7 @@
 package blogsystem.usecases.user.add;
 
+import java.util.UUID;
+
 import blogsystem.domain.user.entities.User;
 import blogsystem.domain.user.gateway.UserGateway;
 import blogsystem.usecases.Usecase;
@@ -21,11 +23,11 @@ public class AddUserUsecase implements Usecase<AddUserInputDto, AddUserOutputDto
 
         // Criação de acordo com as regras de domínio
         final User newUser = User.create(
-                null, // Você pode deixar null aqui, pois o ID será gerado automaticamente
-                input.name(),
-                input.email(),
-                input.password(),
-                input.nickname());
+                null,
+                input.aName(),
+                input.anEmail(),
+                input.aPassword(),
+                input.aNickname());
 
         // Persiste no banco de dados utilizando o gateway
         this.userGateway.save(newUser);

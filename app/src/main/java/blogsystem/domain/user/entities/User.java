@@ -6,6 +6,7 @@ import blogsystem.domain.post.entities.Post;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class User extends Entity {
 
@@ -25,8 +26,13 @@ public class User extends Entity {
         this.validate();
     }
 
-    public static User create(String id, String name, String email, String password, String nickname) {
-        return new User(id, name, email, password, nickname);
+    public static User create(String anId, String aName, String anEmail, String aPassword, String aNickname) {
+        return new User(
+            UUID.randomUUID().toString(),
+            aName,
+            anEmail,
+            aPassword,
+            aNickname);
     }
 
     public String getName() {
