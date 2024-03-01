@@ -16,8 +16,8 @@ public class Post extends Entity implements AggregatteRoot {
     private String content;
     private LocalDateTime postingDate;
 
-    private Post(String postId, String title, User author, String content) {
-        super(postId);
+    private Post(String id, String title, User author, String content) {
+        super(id);
         this.title = title;
         this.author = author;
         this.content = content;
