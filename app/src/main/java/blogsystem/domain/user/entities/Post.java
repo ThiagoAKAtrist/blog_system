@@ -47,8 +47,8 @@ public class Post extends Entity {
             throw new DomainException("Post id is required");
         }
 
-        if (this.title == null || this.title.isEmpty()) {
-            throw new DomainException("Post title is required");
+        if (this.title == null || this.title.isEmpty() || this.title.length() > 50) {
+            throw new DomainException("Post title is required and should not exceed 50 characters");
         }
 
         if (this.author == null) {

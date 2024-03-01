@@ -98,7 +98,6 @@ public class Post extends Entity implements AggregatteRoot {
     }
 
     public String getPostId() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPostId'");
+        return getId();
     }
 }
