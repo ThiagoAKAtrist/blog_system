@@ -1,7 +1,5 @@
 package blogsystem.usecases.user.add;
 
-import java.util.UUID;
-
 import blogsystem.domain.user.entities.User;
 import blogsystem.domain.user.gateway.UserGateway;
 import blogsystem.usecases.Usecase;
