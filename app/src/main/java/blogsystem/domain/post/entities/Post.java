@@ -16,8 +16,8 @@ public class Post extends Entity implements AggregatteRoot {
     private String content;
     private LocalDateTime postingDate;
 
-    private Post(String id, String title, User author, String content) {
-        super(id);
+    private Post(String postId, String title, User author, String content) {
+        super(postId);
         this.title = title;
         this.author = author;
         this.content = content;
@@ -98,7 +98,6 @@ public class Post extends Entity implements AggregatteRoot {
     }
 
     public String getPostId() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPostId'");
+        return getId();
     }
 }

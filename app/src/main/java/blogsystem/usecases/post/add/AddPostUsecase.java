@@ -5,6 +5,7 @@ import blogsystem.domain.post.gateway.PostGateway;
 import blogsystem.domain.user.entities.User;
 import blogsystem.domain.user.gateway.UserGateway;
 import blogsystem.usecases.Usecase;
+import blogsystem.usecases.exceptions.NotFoundException;
 
 // import java.time.LocalDateTime;
 
@@ -29,11 +30,9 @@ public class AddPostUsecase implements Usecase<AddPostInputDto, AddPostOutputDto
         // Busca do usuário pelo ID
         User author = userGateway.find(input.authorUserId());
 
-        // if (author == null) {
-        //     // Trate a situação em que o usuário não foi encontrado, lançando uma exceção ou retornando um DTO de erro
-        //     // Por exemplo, você pode criar um ErrorResponseDto e retorná-lo
-        //     throw new UserNotFoundException("User not found");
-        // }
+        if (author == null) {
+            throw new NotFoundException("User not found");
+        }
 
         // Criação de um novo post
         Post newPost = Post.create(
@@ -50,7 +49,7 @@ public class AddPostUsecase implements Usecase<AddPostInputDto, AddPostOutputDto
                 newPost.getTitle(),
                 newPost.getAuthor().getId(),
                 newPost.getContent(),
-                newPost.getPostingDate().toString() // Aqui você pode formatar a data conforme necessário
+                newPost.getPostingDate().toString() 
         );
     }
 }
