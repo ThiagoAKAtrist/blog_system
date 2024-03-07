@@ -1,5 +1,6 @@
 package blogsystem.infra.persistence;
 
+import blogsystem.domain.post.entities.Author;
 import blogsystem.domain.user.entities.User;
 import blogsystem.domain.user.gateway.UserGateway;
 
@@ -21,6 +22,15 @@ public class UserRepository implements UserGateway {
     @Override
     public User find(String userId) {
         return users.get(userId);
+    }
+
+    public Author findAuthor(String userId) {
+        User user = users.get(userId);
+        if (user != null) {
+            // Converte User em Author (exemplo simplificado)
+            return new Author(user.getId(), user.getName(), user.getEmail(), user.getPassword(), user.getNickname());
+        }
+        return null;
     }
 
     @Override

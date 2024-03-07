@@ -1,18 +1,17 @@
 package blogsystem.usecases.post.add;
 
 import blogsystem.domain.post.entities.Post;
+import blogsystem.domain.post.entities.Author;
 import blogsystem.domain.post.gateway.PostGateway;
-import blogsystem.domain.user.entities.User;
 import blogsystem.domain.user.gateway.UserGateway;
 import blogsystem.usecases.Usecase;
 import blogsystem.usecases.exceptions.NotFoundException;
 
-// import java.time.LocalDateTime;
 
 public class AddPostUsecase implements Usecase<AddPostInputDto, AddPostOutputDto> {
 
     private final PostGateway postGateway;
-    private final UserGateway userGateway; // Adicione um UserGateway
+    private final UserGateway userGateway;
 
     public AddPostUsecase(PostGateway postGateway, UserGateway userGateway) {
         this.postGateway = postGateway;
@@ -25,13 +24,12 @@ public class AddPostUsecase implements Usecase<AddPostInputDto, AddPostOutputDto
 
     @Override
     public AddPostOutputDto execute(AddPostInputDto input) {
-        // Aqui você pode fazer validações adicionais, se necessário
 
         // Busca do usuário pelo ID
-        User author = userGateway.find(input.authorUserId());
+        Author author = userGateway.findAuthor(input.authorId());
 
         if (author == null) {
-            throw new NotFoundException("User not found");
+            throw new NotFoundException("Author not found");
         }
 
         // Criação de um novo post
@@ -47,6 +45,7 @@ public class AddPostUsecase implements Usecase<AddPostInputDto, AddPostOutputDto
         return new AddPostOutputDto(
                 newPost.getPostId(),
                 newPost.getTitle(),
+                newPost.getAuthor(),
                 newPost.getAuthor().getId(),
                 newPost.getContent(),
                 newPost.getPostingDate().toString() 

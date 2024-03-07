@@ -10,6 +10,6 @@ public interface PostGateway {
     Post find(String postId);
     List<Post> list();
     List<Post> findByUserId(String userId);
-    List<Post> listPostsByAuthor(String authorUserId);
+    List<Post> listPostsByAuthor(String authorId);
 
 }

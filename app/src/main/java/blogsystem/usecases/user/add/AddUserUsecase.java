@@ -21,7 +21,6 @@ public class AddUserUsecase implements Usecase<AddUserInputDto, AddUserOutputDto
 
         // Criação de acordo com as regras de domínio
         final User newUser = User.create(
-                null,
                 input.aName(),
                 input.anEmail(),
                 input.aPassword(),

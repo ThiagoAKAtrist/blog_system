@@ -1,33 +1,27 @@
-package blogsystem.domain.user.entities;
+package blogsystem.domain.post.entities;
 
 import blogsystem.domain.shared.entities.Entity;
 import blogsystem.domain.shared.exceptions.DomainException;
-import blogsystem.domain.post.entities.Post;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
-public class User extends Entity {
+public class Author extends Entity {
 
     private String name;
     private String email;
     private String password;
     private String nickname;
-    private List<Post> posts;
 
-    private User(String id, String name, String email, String password, String nickname) {
+    public Author(String id, String name, String email, String password, String nickname) {
         super(id);
         this.name = name;
         this.email = email;
         this.password = password;
         this.nickname = nickname;
-        this.posts = new ArrayList<>();
         this.validate();
     }
 
-    public static User create(String aName, String anEmail, String aPassword, String aNickname) {
-        return new User(
+    public static Author create(String aName, String anEmail, String aPassword, String aNickname) {
+        return new Author(
             UUID.randomUUID().toString(),
             aName,
             anEmail,
@@ -49,14 +43,6 @@ public class User extends Entity {
 
     public String getNickname() {
         return nickname;
-    }
-
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void addPost(Post post) {
-        this.posts.add(post);
     }
 
     @Override

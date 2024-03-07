@@ -28,9 +28,10 @@ public class FindPostUsecase implements Usecase<FindPostInputDto, FindPostOutput
         return new FindPostOutputDto(
                 foundPost.getPostId(),
                 foundPost.getTitle(),
+                foundPost.getAuthor(),
                 foundPost.getAuthor().getId(),
                 foundPost.getContent(),
-                foundPost.getPostingDate().toString() //test
+                foundPost.getPostingDate().toString()
         );
     }
 }

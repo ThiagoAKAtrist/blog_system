@@ -4,6 +4,7 @@ import blogsystem.domain.shared.entities.Entity;
 import blogsystem.domain.shared.exceptions.DomainException;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class Post extends Entity {
 
@@ -21,8 +22,12 @@ public class Post extends Entity {
         this.validate();
     }
 
-    public static Post create(String id, String title, User author, String content) {
-        return new Post(id, title, author, content);
+    public static Post create(String title, User author, String content) {
+        return new Post(
+            UUID.randomUUID().toString(),
+            title,
+            author, 
+            content);
     }
 
     public String getTitle() {

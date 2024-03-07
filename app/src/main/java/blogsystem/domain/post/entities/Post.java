@@ -1,6 +1,5 @@
 package blogsystem.domain.post.entities;
 
-import blogsystem.domain.user.entities.User;
 import blogsystem.domain.shared.aggregatte.AggregatteRoot;
 import blogsystem.domain.shared.entities.Entity;
 import blogsystem.domain.shared.exceptions.DomainException;
@@ -12,11 +11,11 @@ import java.util.UUID;
 public class Post extends Entity implements AggregatteRoot {
 
     private String title;
-    private User author;
+    private Author author;
     private String content;
     private LocalDateTime postingDate;
 
-    private Post(String id, String title, User author, String content) {
+    private Post(String id, String title, Author author, String content) {
         super(id);
         this.title = title;
         this.author = author;
@@ -25,7 +24,7 @@ public class Post extends Entity implements AggregatteRoot {
         this.validate();
     }
 
-    public static Post create(String title, User author, String content) {
+    public static Post create(String title, Author author, String content) {
         return new Post(
                 UUID.randomUUID().toString(),
                 title,
@@ -33,7 +32,7 @@ public class Post extends Entity implements AggregatteRoot {
                 content);
     }
 
-    public static Post with(String id, String title, User author, String content) {
+    public static Post with(String id, String title, Author author, String content) {
         return new Post(
                 id,
                 title,
@@ -79,7 +78,7 @@ public class Post extends Entity implements AggregatteRoot {
     /**
      * @return the author
      */
-    public User getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 

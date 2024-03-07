@@ -1,8 +1,8 @@
 package blogsystem.usecases.post.list;
 
-public record ListPostsInputDto(String authorUserId) {
+public record ListPostsInputDto(String authorId) {
 
-    public String authorUserId() {
-        return authorUserId;
+    public String authorId() {
+        return authorId;
     }
 }

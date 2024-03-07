@@ -21,7 +21,7 @@ public class ListPostsUsecase implements Usecase<ListPostsInputDto, ListPostsOut
 
     @Override
     public ListPostsOutputDto execute(ListPostsInputDto input) {
-        List<Post> posts = postGateway.listPostsByAuthor(input.authorUserId());
+        List<Post> posts = postGateway.listPostsByAuthor(input.authorId());
 
         List<PostDto> postDtos = posts.stream()
                 .map(this::mapToPostDto)
@@ -34,9 +34,10 @@ public class ListPostsUsecase implements Usecase<ListPostsInputDto, ListPostsOut
         return new PostDto(
                 post.getPostId(),
                 post.getTitle(),
+                post.getAuthor(),
                 post.getAuthor().getId(),
                 post.getContent(),
-                post.getPostingDate().toString() // Aqui você pode formatar a data conforme necessário
+                post.getPostingDate().toString()
         );
     }
 }
