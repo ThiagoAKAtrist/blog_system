@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0-debian
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: blog
+      MYSQL_USER: blog
+      MYSQL_PASSWORD: blog
+    ports:
+      - 3306:3306

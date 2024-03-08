@@ -16,6 +16,18 @@ public class AddUserUsecase implements Usecase<AddUserInputDto, AddUserOutputDto
         return new AddUserUsecase(userGateway);
     }
 
+    public String addUser(String name, String email, String password, String nickname) {
+        // Lógica para adicionar o usuário aqui
+        // Por exemplo, crie um novo usuário com os dados fornecidos
+        User newUser = User.create(name, email, password, nickname);
+
+        // Persiste no banco de dados utilizando o gateway
+        userGateway.save(newUser);
+
+        // Retorna o ID do usuário gerado
+        return newUser.getId();
+    }
+
     @Override
     public AddUserOutputDto execute(final AddUserInputDto input) {
 

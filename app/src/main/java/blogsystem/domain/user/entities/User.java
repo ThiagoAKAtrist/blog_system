@@ -2,6 +2,7 @@ package blogsystem.domain.user.entities;
 
 import blogsystem.domain.shared.entities.Entity;
 import blogsystem.domain.shared.exceptions.DomainException;
+import blogsystem.domain.post.entities.Author;
 import blogsystem.domain.post.entities.Post;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class User extends Entity {
     private String password;
     private String nickname;
     private List<Post> posts;
+    private Author author;
 
     private User(String id, String name, String email, String password, String nickname) {
         super(id);
@@ -55,6 +57,14 @@ public class User extends Entity {
         return posts;
     }
 
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
     public void addPost(Post post) {
         this.posts.add(post);
     }
@@ -81,4 +91,5 @@ public class User extends Entity {
             throw new DomainException("User nickname is required");
         }
     }
+
 }

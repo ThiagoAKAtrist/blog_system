@@ -19,7 +19,7 @@ public class FindUserUsecase implements Usecase<FindUserInputDto, FindUserOutput
 
     @Override
     public FindUserOutputDto execute(final FindUserInputDto input) {
-        User foundUser = userGateway.find(input.userId());
+        User foundUser = userGateway.findById(input.userId());
 
         if (foundUser == null) {
             throw new NotFoundException("User not found");

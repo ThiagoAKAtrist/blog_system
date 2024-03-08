@@ -30,6 +30,10 @@ dependencies {
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
+    implementation("mysql:mysql-connector-java:8.0.33")
+
+    // implementation("jakarta.persistence:jakarta.persistence-api:3.2.0-M2")
+
     // This dependency is used by the application.
     implementation(libs.guava)
 }

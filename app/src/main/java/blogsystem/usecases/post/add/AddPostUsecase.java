@@ -7,8 +7,7 @@ import blogsystem.domain.user.gateway.UserGateway;
 import blogsystem.usecases.Usecase;
 import blogsystem.usecases.exceptions.NotFoundException;
 
-
-public class AddPostUsecase implements Usecase<AddPostInputDto, AddPostOutputDto> {
+public class AddPostUsecase implements Usecase<AddPostInputDto, Post> {
 
     private final PostGateway postGateway;
     private final UserGateway userGateway;
@@ -23,10 +22,10 @@ public class AddPostUsecase implements Usecase<AddPostInputDto, AddPostOutputDto
     }
 
     @Override
-    public AddPostOutputDto execute(AddPostInputDto input) {
+    public Post execute(AddPostInputDto input) {
 
         // Busca do usuário pelo ID
-        Author author = userGateway.findAuthor(input.authorId());
+        Author author = userGateway.findByAuthor(input.authorId());
 
         if (author == null) {
             throw new NotFoundException("Author not found");
@@ -41,14 +40,7 @@ public class AddPostUsecase implements Usecase<AddPostInputDto, AddPostOutputDto
         // Salvando o post
         postGateway.save(newPost);
 
-        // Construção do DTO de saída
-        return new AddPostOutputDto(
-                newPost.getPostId(),
-                newPost.getTitle(),
-                newPost.getAuthor(),
-                newPost.getAuthor().getId(),
-                newPost.getContent(),
-                newPost.getPostingDate().toString() 
-        );
+        // Retornando o post criado
+        return newPost;
     }
 }

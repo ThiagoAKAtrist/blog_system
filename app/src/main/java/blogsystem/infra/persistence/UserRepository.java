@@ -20,11 +20,11 @@ public class UserRepository implements UserGateway {
     }
 
     @Override
-    public User find(String userId) {
+    public User findById(String userId) {
         return users.get(userId);
     }
 
-    public Author findAuthor(String userId) {
+    public Author findByAuthor(String userId) {
         User user = users.get(userId);
         if (user != null) {
             // Converte User em Author (exemplo simplificado)

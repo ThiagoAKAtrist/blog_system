@@ -5,7 +5,7 @@ import blogsystem.domain.post.gateway.PostGateway;
 import blogsystem.usecases.Usecase;
 import blogsystem.usecases.exceptions.NotFoundException;
 
-public class FindPostUsecase implements Usecase<FindPostInputDto, FindPostOutputDto> {
+public class FindPostUsecase implements Usecase<FindPostInputDto, Post> {
 
     private final PostGateway postGateway;
 
@@ -18,20 +18,13 @@ public class FindPostUsecase implements Usecase<FindPostInputDto, FindPostOutput
     }
 
     @Override
-    public FindPostOutputDto execute(FindPostInputDto input) {
+    public Post execute(FindPostInputDto input) {
         Post foundPost = postGateway.find(input.postId());
 
         if (foundPost == null) {
             throw new NotFoundException("Post not found");
         }
 
-        return new FindPostOutputDto(
-                foundPost.getPostId(),
-                foundPost.getTitle(),
-                foundPost.getAuthor(),
-                foundPost.getAuthor().getId(),
-                foundPost.getContent(),
-                foundPost.getPostingDate().toString()
-        );
+        return foundPost;
     }
 }

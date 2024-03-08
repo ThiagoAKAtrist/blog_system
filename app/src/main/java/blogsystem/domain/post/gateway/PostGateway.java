@@ -11,5 +11,6 @@ public interface PostGateway {
     List<Post> list();
     List<Post> findByUserId(String userId);
     List<Post> listPostsByAuthor(String authorId);
+    List<Post> listAllPosts();
 
 }

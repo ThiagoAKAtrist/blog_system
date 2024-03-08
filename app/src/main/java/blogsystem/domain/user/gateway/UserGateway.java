@@ -8,8 +8,8 @@ import java.util.List;
 public interface UserGateway {
 
     void save(final User user);
-    User find(final String userId);
-    Author findAuthor(final String userId);
+    User findById(final String userId);
+    Author findByAuthor(final String authorId);
     List<User> list();
 
 }
