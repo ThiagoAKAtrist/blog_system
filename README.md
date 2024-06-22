@@ -1,2 +1,2 @@
 # Blog System
-Using Clean Code and SOLID principles was made the domain layer and usecases of a Blog program (Not an actual working system).
+Using Clean Code and SOLID principles to make the domain layer and usecases of an hypothetical Blog program (Not an actual working system. Maybe someday).
